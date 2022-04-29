@@ -1,5 +1,8 @@
 webcam-playground
 =================
+### Notes
+- HTTPS only
+
 ### TODOs
 - [ ] Snap video to canvas
 - [ ] Check largest resolution (eg: 4032 * 3024)
