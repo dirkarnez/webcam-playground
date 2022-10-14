@@ -63,7 +63,7 @@ eightKButton.onclick = () => {
 
 v20Button.onclick = () => {
   getMedia({
-    video: {width: {exact: 3480}, height: {exact: 4640}}
+    video: {width: {exact: 4640}, height: {exact: 3480}}
   });
 };
 
@@ -100,7 +100,7 @@ function gotStream(mediaStream) {
   video.srcObject = mediaStream;
   messagebox.style.display = 'none';
   videoblock.style.display = 'block';
-  const track = mediaStream.getVideoTracks()[0];
+  const track = mediaStream.getVideoTracks()[1];
   const constraints = track.getConstraints();
   console.log('Result constraints: ' + JSON.stringify(constraints));
   if (constraints && constraints.width && constraints.width.exact) {
