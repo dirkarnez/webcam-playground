@@ -100,7 +100,7 @@ function gotStream(mediaStream) {
   video.srcObject = mediaStream;
   messagebox.style.display = 'none';
   videoblock.style.display = 'block';
-  const track = mediaStream.getVideoTracks()[1];
+  const track = mediaStream.getVideoTracks()[0];
   const constraints = track.getConstraints();
   console.log('Result constraints: ' + JSON.stringify(constraints));
   if (constraints && constraints.width && constraints.width.exact) {
