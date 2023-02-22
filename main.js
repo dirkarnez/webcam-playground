@@ -194,6 +194,6 @@ function getMedia(constraints) {
   navigator.mediaDevices.getUserMedia(constraints)
       .then(gotStream)
       .catch(e => {
-        errorMessage('getUserMedia', e.message, e.name);
+        alert(`Error : getUserMedia ${e.message}, ${e.name}`);
       });
 }
