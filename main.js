@@ -8,6 +8,21 @@
 
 'use strict';
 
+if (!navigator.mediaDevices?.enumerateDevices) {
+  console.log("enumerateDevices() not supported.");
+} else {
+  // List cameras and microphones.
+  navigator.mediaDevices.enumerateDevices()
+    .then(devices => {
+      document.getElementById("yoyoyo").innerText = devices
+      .map((device) => `${device.kind}: ${device.label} id = ${device.deviceId}`)
+      .join();
+    })
+    .catch((err) => {
+        alert(`Error : enumerateDevices ${err.message}, ${err.name}`);
+    });
+}
+
 const dimensions = document.querySelector('#dimensions');
 const video = document.querySelector('video');
 let stream;
@@ -92,7 +107,7 @@ const cinemaFourKConstraints = {
 };
 
 const eightKConstraints = {
-  video: {width: {ideal: Infinity}, height: {ideal: Infinity}}
+  video: {width: {ideal: Infinity}, height: {ideal: Infinity}, facingMode: { exact: "environment" }}
 };
 
 function gotStream(mediaStream) {
