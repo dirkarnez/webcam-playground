@@ -63,7 +63,7 @@ eightKButton.onclick = () => {
 
 v20Button.onclick = () => {
   getMedia({
-    video: {width: {exact: 4640}, height: {exact: 3480}}
+    video: {width: {ideal: Infinity}, height: {ideal: Infinity}}
   });
 };
 
@@ -100,6 +100,7 @@ function gotStream(mediaStream) {
   video.srcObject = mediaStream;
   messagebox.style.display = 'none';
   videoblock.style.display = 'block';
+  alert(mediaStream.getVideoTracks().length);
   const track = mediaStream.getVideoTracks()[0];
   const constraints = track.getConstraints();
   console.log('Result constraints: ' + JSON.stringify(constraints));
@@ -113,10 +114,7 @@ function gotStream(mediaStream) {
 }
 
 function errorMessage(who, what) {
-  const message = who + ': ' + what;
-  messagebox.innerText = message;
-  messagebox.style.display = 'block';
-  console.log(message);
+  alert(who + ': ' + what);
 }
 
 function clearErrorMessage() {
