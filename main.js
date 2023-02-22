@@ -107,7 +107,7 @@ const cinemaFourKConstraints = {
 };
 
 const eightKConstraints = {
-  video: {width: {ideal: 4640}, height: {ideal: 3480}, facingMode: { exact: "environment" }}
+  video: {width: {exact: 4640}, height: {exact: 3480}, facingMode: { exact: "environment" }}
 };
 
 function gotStream(mediaStream) {
