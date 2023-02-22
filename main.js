@@ -113,6 +113,7 @@ const eightKConstraints = {
 function gotStream(mediaStream) {
   stream = window.stream = mediaStream; // stream available to console
   video.srcObject = mediaStream;
+  video.play();
   messagebox.style.display = 'none';
   videoblock.style.display = 'block';
   // const constraints = track.getConstraints();
