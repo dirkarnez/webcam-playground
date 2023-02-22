@@ -25,10 +25,10 @@ const v20Button = document.querySelector('#v20');
 const videoblock = document.querySelector('#videoblock');
 const messagebox = document.querySelector('#errormessage');
 
-const widthInput = document.querySelector('div#width input');
-const widthOutput = document.querySelector('div#width span');
-const aspectLock = document.querySelector('#aspectlock');
-const sizeLock = document.querySelector('#sizelock');
+// const widthInput = document.querySelector('div#width input');
+// const widthOutput = document.querySelector('div#width span');
+// const aspectLock = document.querySelector('#aspectlock');
+// const sizeLock = document.querySelector('#sizelock');
 
 let currentWidth = 0;
 let currentHeight = 0;
@@ -92,7 +92,7 @@ const cinemaFourKConstraints = {
 };
 
 const eightKConstraints = {
-  video: {width: {exact: 7680}, height: {exact: 4320}}
+  video: {width: {ideal: Infinity}, height: {ideal: Infinity}}
 };
 
 function gotStream(mediaStream) {
@@ -100,17 +100,15 @@ function gotStream(mediaStream) {
   video.srcObject = mediaStream;
   messagebox.style.display = 'none';
   videoblock.style.display = 'block';
-  alert(mediaStream.getVideoTracks().length);
-  const track = mediaStream.getVideoTracks()[0];
-  const constraints = track.getConstraints();
-  console.log('Result constraints: ' + JSON.stringify(constraints));
-  if (constraints && constraints.width && constraints.width.exact) {
-    widthInput.value = constraints.width.exact;
-    widthOutput.textContent = constraints.width.exact;
-  } else if (constraints && constraints.width && constraints.width.min) {
-    widthInput.value = constraints.width.min;
-    widthOutput.textContent = constraints.width.min;
-  }
+  // const constraints = track.getConstraints();
+  // console.log('Result constraints: ' + JSON.stringify(constraints));
+  // if (constraints && constraints.width && constraints.width.exact) {
+  //   widthInput.value = constraints.width.exact;
+  //   widthOutput.textContent = constraints.width.exact;
+  // } else if (constraints && constraints.width && constraints.width.min) {
+  //   widthInput.value = constraints.width.min;
+  //   widthOutput.textContent = constraints.width.min;
+  // }
 }
 
 function errorMessage(who, what) {
@@ -170,7 +168,7 @@ function constraintChange(e) {
       });
 }
 
-widthInput.onchange = constraintChange;
+// widthInput.onchange = constraintChange;
 
 sizeLock.onchange = () => {
   if (sizeLock.checked) {
